@@ -1,3 +1,27 @@
+class Publisher {
+  private subscribers: Array<iSubscriber> = [];
+  // private state: string;
+
+  public addSubscriber(subscriber: iSubscriber): void {
+    this.subscribers.push(subscriber);
+  }
+
+  public deleteSubscriber(id: string) {}
+}
+
+class Subscriber implements iSubscriber {
+  name: string;
+  publisherState: string = 'initial';
+  constructor() {
+    this.name = Math.random()
+      .toString(36)
+      .substring(7);
+  }
+  update(): any {
+    console.log(1)
+  }
+}
+
 (function() {
     const mainPublisher = new Publisher();
   
@@ -23,29 +47,7 @@
     update(): () => void;
   }
   
-  class Publisher {
-    private subscribers: Array<iSubscriber> = [];
-    // private state: string;
-  
-    public addSubscriber(subscriber: iSubscriber): void {
-      this.subscribers.push(subscriber);
-    }
-  
-    public deleteSubscriber(id: string) {}
-  }
-  
-  class Subscriber implements iSubscriber {
-    name: string;
-    publisherState: string = 'initial';
-    constructor() {
-      this.name = Math.random()
-        .toString(36)
-        .substring(7);
-    }
-    update(): any {
-      console.log(1)
-    }
-  }
+
 
 // export interface Props {
 //   x: number;
